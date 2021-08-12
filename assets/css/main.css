@@ -2757,6 +2757,7 @@ input, select, textarea {
 	}
 
 		.wrapper.style1 {
+			padding: 2em 0 2em 0;
 			background: rgb(46, 42, 42);
 		}
 
@@ -2787,7 +2788,7 @@ input, select, textarea {
 				}
 
 		.wrapper.ruleIntro {
-			padding: 6em 0em 3em 0em;
+			padding: 5em 0em 3em 0em;
 			background: rgb(46, 42, 42);
 		}
 
