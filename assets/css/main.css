@@ -2786,6 +2786,20 @@ input, select, textarea {
 					color: #37c0fb !important;
 				}
 
+		.wrapper.ruleIntro {
+			padding: 6em 0em 3em 0em;
+			background: rgb(46, 42, 42);
+		}
+
+		.wrapper.rule {
+			padding: 0em 0em 1em 0em;
+			background: rgb(46, 42, 42);
+		}
+
+		.wrapper.rule:nth-child(odd) {
+			background: rgb(37, 37, 37);
+		}
+
 /* CTA */
 
 	#cta {
