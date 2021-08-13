@@ -23,7 +23,8 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+	color:rgb(255, 255, 255)}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -2522,6 +2523,16 @@ input, select, textarea {
 
 /* Box */
 
+	.box {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.box img {
+		align-self: center;
+	}
+
 	.box.highlight {
 		text-align: center;
 	}
@@ -2552,14 +2563,24 @@ input, select, textarea {
 
 /* Logo */
 
-	#logo {
-		color: #9c0f0f;
+	b#logoLight {
+		color: #dd0b14;
+		transition: 0.3s;
+	}
+
+	span.title {
+		font-size: 2em;
+	}
+
+	b#logoLight:hover {
+		color: #ff3e48;
 	}
 
 	#logodark {
-		color: #6e1616;
+		color: #dd0b14;
 	}
 
+	
 /* Header */
 
 	#header {
@@ -2800,6 +2821,7 @@ input, select, textarea {
 		.wrapper.rule:nth-child(odd) {
 			background: rgb(37, 37, 37);
 		}
+
 
 /* CTA */
 
@@ -3116,7 +3138,7 @@ input, select, textarea {
 				background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
 				height: 44px;
 				line-height: 44px;
-				box-shadow: 0 4px 0 0 #37c0fb;
+				box-shadow: 0 4px 0 0 #6e1616;
 			}
 
 				#titleBar .title {
@@ -3124,7 +3146,6 @@ input, select, textarea {
 					position: relative;
 					font-weight: 600;
 					text-align: center;
-					color: #fff;
 					z-index: 1;
 				}
 
@@ -3363,6 +3384,7 @@ input, select, textarea {
 			}
 
 		/* Box */
+
 
 			.box.highlight {
 				padding-left: calc(4em + 30px);
