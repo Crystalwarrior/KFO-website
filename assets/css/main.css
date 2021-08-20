@@ -98,7 +98,7 @@ input, select, textarea {
 			transition: none !important;
 		}
 
-	body, input, select, textarea {
+	body, select, textarea {
 		color: #ffffff;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 16pt;
@@ -3473,3 +3473,24 @@ input, select, textarea {
 			}
 
 	}
+
+#sidebar {
+	margin-left: 1em;
+}
+
+.sitcky {
+	position: sticky;
+	top: 0;
+}
+
+#timeline {
+	width: auto;
+	border: 1px solid #484;
+}
+
+#nameList {
+	margin-top: 1em;
+}
+[type="number"] {
+	width: 4em;
+}
