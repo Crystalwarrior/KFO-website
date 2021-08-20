@@ -3494,3 +3494,10 @@ input, select, textarea {
 [type="number"] {
 	width: 4em;
 }
+
+svg text {
+	font-family: Verdana;
+	font-size: 1.3em;
+	font-weight: 200;
+	color: white;
+}
