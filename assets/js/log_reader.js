@@ -4,14 +4,16 @@ var canvasHeight = 500;
 // Area stuff
 var areaCoord = {};
 var areaHeaderY = 10;
-var areaHeaderLeftMar = 20;
-var areaHeaderSpacing = 35;
+var areaHeaderLeftMar = 0;
+var areaHeaderSpacing = 60;
 var areaHeaderBottom = 0;
 //SVG stuff
 var svgGroup = {};
 var g;
 var lineg;
-var blockHeight = 30;
+var blockHeight = 0.3;
+
+var colours = ['mediumturquoise', 'mediumpurple', 'orange', 'yellow', 'lime', 'green', 'olive', 'tan', 'salmon', 'mintcream', 'tomato', 'gray', 'violet', 'beige', 'cyan'];
 
 $(document).ready(function(){
 
@@ -32,7 +34,8 @@ $(document).ready(function(){
       for (let i = 0; i < fileList.length; i++) {
           logs[fileList[i].name.split(".log")[0]] = {}
           logs[fileList[i].name.split(".log")[0]]["file"] = fileList[i]
-          $("#nameList").append( "<li>" + fileList[i].name.split(".log")[0] + "</li>" );
+          logs[fileList[i].name.split(".log")[0]]["color"] = colours[Object.keys(logs).length-1]
+          $("#nameList").append( "<li><font color='" + colours[Object.keys(logs).length-1] +"'>" + fileList[i].name.split(".log")[0] + "</font></li>" );
         }
       console.log(logs)
   });
@@ -42,8 +45,6 @@ $(document).ready(function(){
     $('#timeline').svg({onLoad: drawInitial});
     areaCoord = {};
     areaHeaderY = 10;
-    areaHeaderLeftMar = 20;
-    areaHeaderSpacing = 35;
     areaHeaderBottom = 0;
     createTimeline()
     //readByLine(logs[$("#name").val()])
@@ -54,7 +55,6 @@ $(document).ready(function(){
     //readLine(logs[names[0]], $("#name").val())
   });
 
-  console.log($("#name").getCoord().y)
   
   //$("#timeline").height(500);
 
@@ -63,8 +63,6 @@ $(document).ready(function(){
   $("#timeline").height(500);
   $("#timeline svg").attr("height", $("#timeline").height());
 })
-
-var colours = ['purple', 'red', 'orange', 'yellow', 'lime', 'green', 'blue', 'navy', 'black'];
 
 function random(range) {
 	return Math.floor(Math.random() * range);
@@ -124,24 +122,37 @@ function createTimeline() {
   time = [$("#toHour").val(), $("#toMinute").val(), $("#toSecond").val()]
   var toDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...time);
   var areaHeaderLine = canvas.line(g, 0, areaHeaderBottom, $("#timeline svg").attr("width"), areaHeaderBottom, {strokeWidth: 5});
+  var charX = 20; 
   for (const [key, value] of Object.entries(logs)) {
-    var currentY = 0;
-    canvas.polyline($("#travelLines"), [], {fill: 'none', stroke: 'blue', strokeWidth: 5, id: key + "line"});
+    logs[key+"Y"] = 0;
+    logs[key+"X"] = charX;
+    charX += 5;
+    canvas.polyline($("#travelLines"), [], {fill: 'none', stroke: logs[key]["color"], strokeWidth: 2, id: key + "line"});
     var reader = new FileReader();
     reader.readAsText(logs[key]["file"]);
     reader.onload = function(){
       //Search for the line where to log from
       var lines = this.result.split('\n');
+      var prevMoveDate = -1;
       for(var line = 0; line < lines.length-1; line++){
+        var lineTime = getLineTime(lines[line]);
+        var lineDate = getLineDate(lines[line]);
         //Check if line have timestampt and if it's between the requested timeframe
-        if (getLineTime(lines[line]) >= fromDate.toLocaleTimeString('en-UK') && getLineTime(lines[line]) <= toDate.toLocaleTimeString('en-UK')) {
+        if (lineTime >= fromDate.toLocaleTimeString('en-UK') && getLineTime(lines[line]) <= toDate.toLocaleTimeString('en-UK')) {
           var lineData = readLine(lines[line]);
           //Check if the line is an IC message or movement
           if (lineData != -1) {
 
             if ("area" in lineData) { // If it's a movement line
+              //console.log(lines[line]);
               if (lineData["area"] in areaCoord == false) { // Area not yet have a collumn
-                areaCoord[lineData["area"]] = Object.keys(areaCoord).length * areaHeaderSpacing;
+                areaCoord[lineData["area"]] = Object.keys(areaCoord).length * areaHeaderSpacing + 20;
+                if (areaCoord[lineData["area"]] > $("#timeline").width()) {
+                  var canvasWidth = $("#timeline").width();
+                  $("#timeline").width(canvasWidth + 80);
+                  $("#timeline svg").attr("width", $("#timeline").width());
+
+                }
                 var currentText = canvas.text(0, 0, lineData["area"]);
                 canvas.configure(currentText, {transform: "translate(" + (areaCoord[lineData["area"]] + areaHeaderLeftMar) + ", " + areaHeaderY +") rotate(90)"}, false);
                 canvas.line(lineg, (areaCoord[lineData["area"]] + 47), 0, (areaCoord[lineData["area"]] + 47), 50000);
@@ -152,20 +163,25 @@ function createTimeline() {
                 }
               }
               // Place new point
-              if ($("#" + key + "line").attr('points') == undefined) {
-                $("#" + key + "line").attr("points"," " + (areaCoord[lineData["area"]] + 25) + ", " + currentY);
-              } else {
-                $("#" + key + "line").attr("points", $("#" + key + "line").attr('points') + " " + (areaCoord[lineData["area"]] + 25) + ", " + currentY);
+              if (prevMoveDate != -1) {
+                var dateDiff = Math.abs(lineDate - prevMoveDate);
+                logs[key+"Y"] += Math.ceil(dateDiff / (1000)) * blockHeight;
               }
-              currentY += blockHeight;
-              canvas.circle($("#travelLines"), (areaCoord[lineData["area"]] + 25), currentY, 5, {fill: 'red', 
-                stroke: 'blue', strokeWidth: 5, transform: "translate(0, -30)"});
-              if (areaHeaderBottom + currentY > $("#timeline").height()) {
-                canvasHeight += 20;
+              if ($("#" + key + "line").attr('points') == undefined) {
+                $("#" + key + "line").attr("points"," " + ((areaCoord[lineData["area"]] - (areaHeaderSpacing/2)) + logs[key+"X"]) + ", " + logs[key+"Y"]);
+              } else {
+                $("#" + key + "line").attr("points", $("#" + key + "line").attr('points') + " " + ((areaCoord[lineData["area"]] - (areaHeaderSpacing/2)) + logs[key+"X"]) + ", " + logs[key+"Y"]);
+              }
+              canvas.circle($("#travelLines"), ((areaCoord[lineData["area"]] - (areaHeaderSpacing/2)) + logs[key+"X"]), logs[key+"Y"], 3, {fill: 'red', 
+              stroke: $("#" + key + "line").attr("stroke"), strokeWidth: 2});
+              logs[key+"Y"] += blockHeight;
+              if (areaHeaderBottom + logs[key+"Y"] + 80 > $("#timeline").height()) {
+                canvasHeight += 50;
                 $("#timeline").height(canvasHeight);
                 $("#timeline svg").attr("height", $("#timeline").height());
               }
               //$("#polyTest").attr("points", $("#polyTest").attr("points") + " 100, 300 " + (areaCoord[lineData["area"]] + 25) + ", 350");
+              prevMoveDate = lineDate;
             } else { // If it's a message line
 
             }
@@ -176,6 +192,19 @@ function createTimeline() {
   }
   canvas.line(g, 0, areaHeaderBottom, $("#timeline svg").attr("width"), areaHeaderBottom, {strokeWidth: 5});
   //canvas.line(g, 450, 120, 550, 20, {strokeWidth: 5});
+}
+
+function getLineDate(line) {
+  if (line.split(" GMT] ").length > 1){
+    var timeResult = line.split(" GMT] ")
+    timeResult = timeResult[0].split(" ")
+    var time = timeResult[timeResult.length - 2].split(':');
+    let now = new Date();
+    timeResult = new Date(timeResult[timeResult.length - 1], now.getMonth(), timeResult[timeResult.length - 3], ...time);
+    return timeResult;
+  } else {
+    return -1;
+  }
 }
 
 function getLineTime(line) {
@@ -210,7 +239,7 @@ function readLine(line) { //Check if message is an IC message and return time, c
       //Check if server sent the message
       if (line.split(" GMT] ")[1].split(": ")[0] == "$H") {
         //Check if it's a movement message
-        if (line.search("Changed to area:") != -1 || line.search("Following") != -1) {
+        if (line.search("Changed to area:") != -1) {
           lineResult["area"] = line.split("] ")[line.split("] ").length - 1].split(".")[0];
           return lineResult;
         } else {
