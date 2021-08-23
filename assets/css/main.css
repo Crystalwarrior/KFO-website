@@ -3478,10 +3478,33 @@ input, select, textarea {
 	margin-left: 1em;
 }
 
-.sitcky {
+#graphHeader {
+	width: auto;
+	height: 10em;
+	display: flex;
+	flex-direction: row;
+	background-color: rgb(46, 42, 42);
+	border-bottom: 4px #484 solid;
+}
+
+.sticky {
 	position: sticky;
 	top: 0;
 }
+
+.roomName {
+	transform: rotate(90deg);
+	height: auto;
+	width: 1px;
+	line-height: 1;
+	align-self: flex-start;
+}
+
+.vl {
+	border-left: 2px solid green;
+	height: auto;
+	width: 0;
+  }
 
 #timeline {
 	width: auto;

@@ -57,17 +57,20 @@
 					<div>
 						<div class="row gtr-200">
 							<div class="col-2 col-12-narrower sticky">
-								<div id="sidebar">
+								<div id="sidebar" class="sticky">
 
 									<!-- Sidebar -->
 
 										<section>
 											<input type="file" id="file-selector" accept=".log" multiple>
-											From time:<br>
+											From time:
+											<br>
 											<input type="number" min=0 max=59 id="fromHour" value=18 style="color: black;">h
 											<input type="number" min=0 max=59 id="fromMinute" value=0 style="color: black;">m
 											<input type="number" min=0 max=59 id="fromSecond" value=0 style="color: black;">s
-											To time:<br>
+											<br>
+											To time:
+											<br>
 											<input type="number" min=0 max=59 id="toHour" value=22 style="color: black;">h
 											<input type="number" min=0 max=59 id="toMinute" value=0 style="color: black;">m
 											<input type="number" min=0 max=59 id="toSecond" value=0 style="color: black;">s
@@ -82,7 +85,8 @@
 								<div id="content">
 
 									<!-- Content -->
-
+									<div id="graphHeader" class="sticky">
+									</div>
 									<div id="timeline"></div>
 
 								</div>

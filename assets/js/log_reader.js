@@ -7,13 +7,15 @@ var areaHeaderY = 10;
 var areaHeaderLeftMar = 0;
 var areaHeaderSpacing = 60;
 var areaHeaderBottom = 0;
+var timeColWidth = 100;
 //SVG stuff
 var svgGroup = {};
 var g;
 var lineg;
-var blockHeight = 0.3;
+var timeScale
+var blockHeight = 1;
 
-var colours = ['mediumturquoise', 'mediumpurple', 'orange', 'yellow', 'lime', 'green', 'olive', 'tan', 'salmon', 'mintcream', 'tomato', 'gray', 'violet', 'beige', 'cyan'];
+var colours = ['mediumturquoise', 'mediumpurple', 'orange', 'yellow', 'lime', 'green', 'olive', 'maroon', 'salmon', 'mintcream', 'tomato', 'gray', 'violet', 'beige', 'cyan'];
 
 $(document).ready(function(){
 
@@ -45,7 +47,7 @@ $(document).ready(function(){
     $('#timeline').svg({onLoad: drawInitial});
     areaCoord = {};
     areaHeaderY = 10;
-    areaHeaderBottom = 0;
+    areaHeaderBottom = 50;
     createTimeline()
     //readByLine(logs[$("#name").val()])
     //var time = [$("#fromHour").val(), $("#fromMinute").val(), $("#fromSecond").val()]
@@ -72,6 +74,7 @@ function drawInitial(svg) {
   canvas = svg;
   g = svg.group({stroke: 'black'}); 
   lineg = svg.group({stroke: 'black', strokeWidth: 2});
+  timeScale = canvas.group({stroke: 'black'});
   travelLines = svg.group({stroke: "blue", transform: 'translate(0,0)', id: "travelLines"}); 
   //testPoly = canvas.polyline(travelLines, [[450,250], 
   //  [475,250],[475,220],[500,220],[500,250]], 
@@ -121,7 +124,10 @@ function createTimeline() {
   var fromDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...time);
   time = [$("#toHour").val(), $("#toMinute").val(), $("#toSecond").val()]
   var toDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...time);
-  var areaHeaderLine = canvas.line(g, 0, areaHeaderBottom, $("#timeline svg").attr("width"), areaHeaderBottom, {strokeWidth: 5});
+  var areaHeaderLine = canvas.line(g, 0, areaHeaderBottom, 5000, areaHeaderBottom, {strokeWidth: 5});
+  $("#travelLines").attr("transform", "translate(0,"+ areaHeaderBottom +")")
+  drawTimescale();
+  canvas.line(lineg, timeColWidth-15, 0, timeColWidth-15, 50000);
   var charX = 20; 
   for (const [key, value] of Object.entries(logs)) {
     logs[key+"Y"] = 0;
@@ -131,7 +137,6 @@ function createTimeline() {
     var reader = new FileReader();
     reader.readAsText(logs[key]["file"]);
     reader.onload = function(){
-      //Search for the line where to log from
       var lines = this.result.split('\n');
       var prevMoveDate = -1;
       for(var line = 0; line < lines.length-1; line++){
@@ -146,20 +151,32 @@ function createTimeline() {
             if ("area" in lineData) { // If it's a movement line
               //console.log(lines[line]);
               if (lineData["area"] in areaCoord == false) { // Area not yet have a collumn
-                areaCoord[lineData["area"]] = Object.keys(areaCoord).length * areaHeaderSpacing + 20;
-                if (areaCoord[lineData["area"]] > $("#timeline").width()) {
+                areaCoord[lineData["area"]] = Object.keys(areaCoord).length * areaHeaderSpacing + timeColWidth;
+                //var currentText = canvas.text(0, 0, lineData["area"]);
+                //canvas.configure(currentText, {transform: "translate(" + (areaCoord[lineData["area"]] + areaHeaderLeftMar) + ", " + areaHeaderY +") rotate(90)"}, false);
+                canvas.line(lineg, (areaCoord[lineData["area"]] + 47), 0, (areaCoord[lineData["area"]] + 47), 50000);
+                //Add areaname to sticky graph header
+                $("#graphHeader").append('<div id ="' + lineData["area"] + '" class="roomName sticky">' + formatString(lineData["area"]) + '</div><div class="vl"></div>');
+                document.getElementById(lineData["area"]).style.margin = (areaHeaderSpacing/2)-1.45 + "px";
+                if (Object.keys(areaCoord).length == 1) {
+                  document.getElementById(lineData["area"]).style.marginLeft = timeColWidth+15 + "px";
+                };
+                //$("#graphHeader #"+lineData["area"]).style.width = areaHeaderSpacing;
+                //$("#"+lineData["area"]).attr("transform", "translate(" + areaCoord[lineData["area"]] + ", 0)")
+                //$("#"+lineData["area"]).animate({transform: "translateX(" + areaCoord[lineData["area"]] + ")"});
+
+                //if (areaHeaderY + currentText.getBBox().width > areaHeaderBottom) {
+                //  areaHeaderBottom = 10 + areaHeaderY + currentText.getBBox().width;
+                //  canvas.configure(areaHeaderLine, {transform: "translate(0,"+ areaHeaderBottom +")"});
+                //  canvas.configure(timeScale, {transform: "translate(0,"+ areaHeaderBottom +")"})
+                //  $("#travelLines").attr("transform", "translate(0,"+ areaHeaderBottom +")")
+                //}
+                if (areaCoord[lineData["area"]] > $("#timeline").width()) { //Check if we don't run out of space, if yes, make the canvas wider
                   var canvasWidth = $("#timeline").width();
+                  $("#content").width(canvasWidth + 80);
                   $("#timeline").width(canvasWidth + 80);
                   $("#timeline svg").attr("width", $("#timeline").width());
 
-                }
-                var currentText = canvas.text(0, 0, lineData["area"]);
-                canvas.configure(currentText, {transform: "translate(" + (areaCoord[lineData["area"]] + areaHeaderLeftMar) + ", " + areaHeaderY +") rotate(90)"}, false);
-                canvas.line(lineg, (areaCoord[lineData["area"]] + 47), 0, (areaCoord[lineData["area"]] + 47), 50000);
-                if (areaHeaderY + currentText.getBBox().width > areaHeaderBottom) {
-                  areaHeaderBottom = 10 + areaHeaderY + currentText.getBBox().width;
-                  canvas.configure(areaHeaderLine, {transform: "translate(0,"+ areaHeaderBottom +")"});
-                  $("#travelLines").attr("transform", "translate(0,"+ areaHeaderBottom +")")
                 }
               }
               // Place new point
@@ -175,9 +192,8 @@ function createTimeline() {
               canvas.circle($("#travelLines"), ((areaCoord[lineData["area"]] - (areaHeaderSpacing/2)) + logs[key+"X"]), logs[key+"Y"], 3, {fill: 'red', 
               stroke: $("#" + key + "line").attr("stroke"), strokeWidth: 2});
               logs[key+"Y"] += blockHeight;
-              if (areaHeaderBottom + logs[key+"Y"] + 80 > $("#timeline").height()) {
-                canvasHeight += 50;
-                $("#timeline").height(canvasHeight);
+              if (areaHeaderBottom + logs[key+"Y"]> $("#timeline").height()) {
+                $("#timeline").height(areaHeaderBottom + logs[key+"Y"] + 100);
                 $("#timeline svg").attr("height", $("#timeline").height());
               }
               //$("#polyTest").attr("points", $("#polyTest").attr("points") + " 100, 300 " + (areaCoord[lineData["area"]] + 25) + ", 350");
@@ -191,7 +207,13 @@ function createTimeline() {
     }
   }
   canvas.line(g, 0, areaHeaderBottom, $("#timeline svg").attr("width"), areaHeaderBottom, {strokeWidth: 5});
-  //canvas.line(g, 450, 120, 550, 20, {strokeWidth: 5});
+}
+
+function drawTimescale() {
+  for (let i = 0; i < 1000; i++) {
+    var lineY = i* (60 * blockHeight);
+    canvas.line(timeScale, timeColWidth-80, lineY, 50000, lineY);
+  }
 }
 
 function getLineDate(line) {
@@ -251,15 +273,14 @@ function readLine(line) { //Check if message is an IC message and return time, c
     }
   }
 }
-
-function drawIntro(svg) { 
-  svg.circle(75, 75, 50, 
-      {fill: 'none', stroke: 'red', strokeWidth: 3}); 
-  var g = svg.group({stroke: 'black', strokeWidth: 2}); 
-  svg.line(g, 15, 75, 135, 75); 
-  svg.line(g, 75, 15, 75, 135); 
-}
-
-function readLogs() {
-
+ function formatString(theString) {
+   console.log(theString);
+   console.log(theString.length);
+   console.log(theString.lastIndexOf(" "));
+   console.log("________________")
+  if (theString.lastIndexOf(" ") == theString.length-1) {
+    console.log("FOUND ONE");
+    theString = theString.substr(0, theString.length-1);
+  }
+  return theString.replace(/ /g, "_");
 }
