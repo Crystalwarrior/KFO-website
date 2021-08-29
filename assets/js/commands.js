@@ -7,6 +7,7 @@ $(document).ready(function(){
     fetch(URL)
     .then(res => res.text())
     .then(text => {
+        console.log(text);
         generateCommands(text);
     })
     .catch(err => console.log(err));
@@ -20,7 +21,7 @@ function generateCommands(text) {
     lines.splice(0,2);
     // join the array back into a single string
     text = lines.join('\n');
-    text = text.replace(/</g, "&#60;")
+    //text = text.replace(/</g, "&#60;")
     var converter = new showdown.Converter();
     var html = converter.makeHtml(text);
     $("#center").append(html);

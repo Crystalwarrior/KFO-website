@@ -115,7 +115,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: rgb(194, 28, 28);
+			color: rgb(245, 89, 89);
 			border-bottom-color: transparent;
 		}
 
@@ -209,7 +209,7 @@ input, select, textarea {
 /* Container */
 
 	.container {
-		margin: 0 auto;
+		margin: 3em;
 		max-width: 100%;
 		width: 1400px;
 	}
@@ -2458,7 +2458,7 @@ input, select, textarea {
 		button:hover,
 		.button:hover {
 			background-color: #50c8fc;
-			color: rgb(194, 28, 28);
+			color: rgb(194, 28, 153);
 		}
 
 		input[type="submit"]:active,
@@ -3577,6 +3577,15 @@ svg text {
 	background: linear-gradient(135deg, rgb(161, 117, 117), rgb(31, 28, 28));
 	width: 5px;
 	z-index: -10;
+  }
+
+  #stickysidebar {
+	position: sticky;
+	top: 0;
+	max-height: 100vh;
+	overflow-y: scroll;
+	width: auto;
+	padding-top: 0.2em;
   }
 
   .toTop {
