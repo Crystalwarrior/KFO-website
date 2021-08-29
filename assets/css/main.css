@@ -111,9 +111,7 @@ input, select, textarea {
 		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-		color: #37c0fb;
 		text-decoration: none;
-		border-bottom: dotted 1px;
 	}
 
 		a:hover {
@@ -2445,12 +2443,12 @@ input, select, textarea {
 		color: #fff;
 		cursor: pointer;
 		display: inline-block;
-		padding: 0 1.5em;
+		padding: 0 0.5em;
 		line-height: 2.75em;
-		min-width: 9em;
+		/*min-width: 9em;*/
 		text-align: center;
 		text-decoration: none;
-		font-weight: 600;
+		font-weight: 300;
 		letter-spacing: -0.025em;
 	}
 
@@ -3473,24 +3471,110 @@ input, select, textarea {
 			}
 
 	}
-
-#sidebar {
-	margin-left: 1em;
+/*
+#graphHeader {
+	width: auto;
+	height: 10em;
+	display: flex;
+	flex-direction: row;
+	background-color: rgb(46, 42, 42);
+	border-bottom: 4px #484 solid;
 }
-
-.sitcky {
+*/
+.sticky {
 	position: sticky;
 	top: 0;
 }
 
+.fromto {
+	font-size: 0.5em;
+}
+
+.roomName {
+	transform: rotate(90deg);
+	height: auto;
+	width: 1px;
+	line-height: 1;
+	align-self: flex-start;
+}
+
+.vl {
+	border-left: 2px solid rgb(0, 0, 0);
+	height: auto;
+	width: 0;
+  }
+
 #timeline {
-	width: auto;
-	border: 1px solid #484;
+	width: 100%;
+	/*border: 1px solid #484;*/
 }
 
 #nameList {
-	margin-top: 1em;
+	margin-top: 0.5em;
+	font-weight: bold;
 }
 [type="number"] {
 	width: 4em;
 }
+
+svg text {
+	font-family: Verdana;
+	font-size: 1.3em;
+	font-weight: 200;
+	color: white;
+}
+
+.hscroll {
+	overflow: auto;
+	white-space: nowrap;
+}
+
+#app {
+    overflow: auto;
+    height: 100vh;
+  }
+  #graphHeader {
+    background: blue;
+	width: fit-content;
+	display: flex;
+    height: 10em;
+    position: sticky;
+    top: 0;
+    left: 0;
+	display: flex;
+	flex-direction: row;
+    color: white;
+	flex-direction: row;
+	background-color: rgb(46, 42, 42);
+	border-bottom: 4px black solid;
+  }
+
+  #sidebar {
+    position: sticky;
+    background: rgb(46, 42, 42);
+    width: 10em;
+    height: fit-content;
+    top: 0px;
+    left: 0;
+    color: white;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  #container {
+    display: inline-flex;
+  }
+  #content {
+    background: #555;
+    height: 200vh;
+    width: fit-content;
+    background: linear-gradient(135deg, rgb(46, 42, 42), rgb(31, 28, 28));
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  #testTimeScale {
+	position: sticky;
+	left: 0;
+	background: linear-gradient(135deg, rgb(161, 117, 117), rgb(31, 28, 28));
+	width: 5px;
+	z-index: -10;
+  }
