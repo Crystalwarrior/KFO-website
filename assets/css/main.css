@@ -115,7 +115,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: #37c0fb;
+			color: rgb(194, 28, 28);
 			border-bottom-color: transparent;
 		}
 
@@ -2458,7 +2458,7 @@ input, select, textarea {
 		button:hover,
 		.button:hover {
 			background-color: #50c8fc;
-			color: #fff !important;
+			color: rgb(194, 28, 28);
 		}
 
 		input[type="submit"]:active,
@@ -3577,4 +3577,9 @@ svg text {
 	background: linear-gradient(135deg, rgb(161, 117, 117), rgb(31, 28, 28));
 	width: 5px;
 	z-index: -10;
+  }
+
+  .toTop {
+	  position: sticky;
+	  top: 4em;
   }
