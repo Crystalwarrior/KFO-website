@@ -3584,7 +3584,6 @@ svg text {
 	top: 0;
 	max-height: 100vh;
 	overflow-y: scroll;
-	width: auto;
 	padding-top: 0.2em;
   }
 
