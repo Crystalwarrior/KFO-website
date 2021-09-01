@@ -19,7 +19,7 @@ var lineg;
 var timeScale
 var blockHeight = 1;
 
-var colours = ['mediumturquoise', 'mediumpurple', 'orange', 'yellow', 'lime', 'green', 'olive', 'firebrick', 'salmon', 'goldenrod', 'tomato', 'gray', 'violet', 'beige', 'cyan', 'darkseagreen', 'gold', 'lightskyblue', 'pink', 'rebeccapurple', 'lightgreen', 'rosybrown', 'saddlebrown', 'steelblue'];
+var colours = ['mediumturquoise', 'mediumpurple', 'orange', 'yellow', 'lime', 'green', 'olive', 'firebrick', 'salmon', 'chocolate', 'orange', 'gray', 'violet', 'beige', 'aquamarine', 'darkseagreen', 'gold', 'lightskyblue', 'pink', 'rebeccapurple', 'lightgreen', 'rosybrown', 'saddlebrown', 'steelblue'];
 
 $(document).ready(function(){
 
@@ -134,7 +134,7 @@ function createTimeline() {
             if ("area" in lineData) { // If it's a movement line
               if (firstTime == null) {
                 firstTime = getLineTime(lines[line]);
-                drawTimescale()
+                //drawTimescale()
               };
               if ("ID" in lineData) {
                 if (lineData["ID"] in characters == false) { //Character is not in the list
@@ -144,8 +144,21 @@ function createTimeline() {
                   pointX += pointSpacing;
                   characters[lineData["ID"]]["prevArea"] = -1;
                   characters[lineData["ID"]]["color"] = colours[Object.keys(characters).length-1];
-                  $("#nameList").append( "<li><font id= '" + lineData["ID"] + "' color='" + characters[lineData["ID"]]["color"] +"'>[" + lineData["ID"] + "]" + lineData["character"] + "</font></li>" );
+                  $("#nameList").append( "<li><button id=" + lineData["ID"] + "vis class='far fa-eye'></button><font id= '" + lineData["ID"] + "' color='" + characters[lineData["ID"]]["color"] +"'>[" + lineData["ID"] + "]" + lineData["character"] + "</font></li>" );
                   canvas.polyline($("#travelLines"), [], {fill: 'none', stroke: characters[lineData["ID"]]["color"], strokeWidth: 2, id: lineData["ID"] + "line"});
+                  $("#"+lineData["ID"]+"vis").on("click", function(){
+                    console.log($(this));
+                    var number = $(this).attr("id").split("vis")[0];
+                    if($(this).attr("class") == "far fa-eye") {
+                      $(this).attr("class", "fas fa-eye-slash");
+                      $("#"+number+"line").attr("style", "visibility: hidden;");
+                      $("."+number+"point").attr("style", "visibility: hidden;");
+                    }else{
+                      $(this).attr("class", "far fa-eye");
+                      $("#"+number+"line").attr("style", "visibility: visible;");
+                      $("."+number+"point").attr("style", "visibility: visible;");
+                    }
+                  });
                 }
                 // If a new name belong to that ID and it doesn't contain custom, change to that
                 if (characters[lineData["ID"]]["name"] != lineData["character"] && characters[lineData["ID"]]["name"].search("Custom") == -1) {
@@ -180,7 +193,7 @@ function createTimeline() {
                 $("#" + lineData["ID"] + "line").attr("points", $("#" + lineData["ID"] + "line").attr('points') + " " + (areaCoord[lineData["area"]] + characters[lineData["ID"]]["Xpos"]) + ", " + Ypos);
               }
               canvas.circle($("#travelLines"), (areaCoord[lineData["area"]] + characters[lineData["ID"]]["Xpos"]), Ypos, 3, {fill: 'red', 
-              stroke: $("#" + lineData["ID"] + "line").attr("stroke"), strokeWidth: 2});
+              stroke: $("#" + lineData["ID"] + "line").attr("stroke"), strokeWidth: 2,class: lineData["ID"] + "point"});
               logs[key+"Y"] += blockHeight;
               if (areaHeaderBottom + Ypos > $("#timeline").height()) { //If we run out of vertical space, add to height
                 $("#timeline").height(areaHeaderBottom + Ypos + 100);

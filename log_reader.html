@@ -58,17 +58,20 @@
 				</div>
 					<div id="container">
 						<div id="sidebar" ref="sidebar">
-							<input type="file" id="file-selector" accept=".log" multiple>
-                            
-                            <input type="number" min=0 max=59 id="fromHour" value=18 style="color: black;">h
-                            <input type="number" min=0 max=59 id="fromMinute" value=0 style="color: black;">m
-                            <input type="number" min=0 max=59 id="fromSecond" value=0 style="color: black;">s
-                            <br>
-                            
-                            <input type="number" min=0 max=59 id="toHour" value=22 style="color: black;">h
-                            <input type="number" min=0 max=59 id="toMinute" value=1 style="color: black;">m
-                            <input type="number" min=0 max=59 id="toSecond" value=0 style="color: black;">s
-                            <button id="readbtn">READ</button>
+							<details open>
+								<summary>Control panel</summary>
+								<input type="file" id="file-selector" accept=".log" multiple>
+								
+								<input type="number" min=0 max=59 id="fromHour" value=18 style="color: black;">h
+								<input type="number" min=0 max=59 id="fromMinute" value=0 style="color: black;">m
+								<input type="number" min=0 max=59 id="fromSecond" value=0 style="color: black;">s
+								<br>
+								
+								<input type="number" min=0 max=59 id="toHour" value=22 style="color: black;">h
+								<input type="number" min=0 max=59 id="toMinute" value=1 style="color: black;">m
+								<input type="number" min=0 max=59 id="toSecond" value=0 style="color: black;">s
+								<button id="readbtn">READ</button>
+							</details>
                             <ul id="nameList">
 						</div>
 						
