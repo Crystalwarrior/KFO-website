@@ -111,7 +111,7 @@ input, select, textarea {
 		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-		text-decoration: none;
+		text-decoration: underline dotted;
 	}
 
 		a:hover {
@@ -2924,7 +2924,8 @@ input, select, textarea {
 /* Content inside of Collapsed Box */
 .content {
   padding: 0 18px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* border:dashed red; */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
