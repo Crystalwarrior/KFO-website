@@ -115,7 +115,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: #37c0fb;
+			color: rgb(194, 28, 28);
 			border-bottom-color: transparent;
 		}
 
@@ -2454,7 +2454,7 @@ input, select, textarea {
 		button:hover,
 		.button:hover {
 			background-color: #c46d6d;
-			color: #fff !important;
+			color: rgb(194, 28, 28) !important;
 		}
 
 		input[type="submit"]:active,
@@ -2641,6 +2641,10 @@ input, select, textarea {
 
 				#nav > ul > li:hover a {
 					color: rgb(194, 28, 28);
+				}
+
+				#nav > ul > li:hover a.wip {
+					color: rgb(82, 82, 82);
 				}
 
 				#nav > ul > li.current {
@@ -3556,6 +3560,16 @@ svg text {
     flex-grow: 0;
     flex-shrink: 0;
   }
+
+  #stickysidebar {
+	position: sticky;
+	top: 0;
+	max-height: 100vh;
+	overflow-y: scroll;
+	margin-top: 2.8em;
+	padding-top: 0.2em;
+  }
+
   #container {
     display: inline-flex;
   }
@@ -3578,4 +3592,8 @@ svg text {
   .fa-eye, .fa-eye-slash{
 	  height: 2em;
 	  width: 2em;
+  }
+
+  .wip:hover {
+	  color:rgb(75, 74, 74)
   }
