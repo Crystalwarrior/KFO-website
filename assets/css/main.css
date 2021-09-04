@@ -115,7 +115,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			color: rgb(245, 89, 89);
+			color: #37c0fb;
 			border-bottom-color: transparent;
 		}
 
@@ -209,7 +209,7 @@ input, select, textarea {
 /* Container */
 
 	.container {
-		margin: 3em;
+		margin: 0 auto;
 		max-width: 100%;
 		width: 1400px;
 	}
@@ -2204,10 +2204,6 @@ input, select, textarea {
 		padding-left: 1em;
 	}
 
-		ul li {
-			padding-left: 0.5em;
-		}
-
 /* Links */
 
 	ul.links {
@@ -2437,7 +2433,7 @@ input, select, textarea {
 		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 		background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-		background-color: #37c0fb;
+		background-color: #8a4c4c;
 		border-radius: 5px;
 		border: 0;
 		color: #fff;
@@ -2457,8 +2453,8 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #50c8fc;
-			color: rgb(194, 28, 153);
+			background-color: #c46d6d;
+			color: #fff !important;
 		}
 
 		input[type="submit"]:active,
@@ -2466,7 +2462,7 @@ input, select, textarea {
 		input[type="button"]:active,
 		button:active,
 		.button:active {
-			background-color: #1eb8fb;
+			background-color: #ca3838;
 			color: #fff;
 		}
 
@@ -3579,15 +3575,7 @@ svg text {
 	z-index: -10;
   }
 
-  #stickysidebar {
-	position: sticky;
-	top: 0;
-	max-height: 100vh;
-	overflow-y: scroll;
-	padding-top: 0.2em;
-  }
-
-  .toTop {
-	  position: sticky;
-	  top: 4em;
+  .fa-eye, .fa-eye-slash{
+	  height: 2em;
+	  width: 2em;
   }
