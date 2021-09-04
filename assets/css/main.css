@@ -2812,6 +2812,11 @@ input, select, textarea {
 					color: #691616 !important;
 				}
 
+		.wrapper.style4 {
+			padding: 2em 0 2em 0;
+			background: rgb(37, 34, 34);
+		}
+
 		.wrapper.ruleIntro {
 			padding: 5em 0em 3em 0em;
 			background: rgb(46, 42, 42);
