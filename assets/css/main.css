@@ -2540,6 +2540,10 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
+	.box.post.disc {
+		margin-bottom: 0.3em;
+	}
+
 		.box.post:after {
 			content: '';
 			display: block;
@@ -2813,8 +2817,13 @@ input, select, textarea {
 				}
 
 		.wrapper.style4 {
-			padding: 2em 0 2em 0;
+			padding: 1em 0 1em 0;
 			background: rgb(37, 34, 34);
+			font-size: 0.8em;
+		}
+
+		.wrapper.style4 p {
+			margin-bottom: 1em;
 		}
 
 		.wrapper.ruleIntro {
@@ -3579,7 +3588,7 @@ svg text {
 	max-height: 100vh;
 	overflow-y: scroll;
 	margin-top: 2.8em;
-	padding-top: 0.2em;
+	padding: 0.2em 0em 0em 0em;
   }
 
   #container {

@@ -42,15 +42,17 @@ function addID() {
 function generateSidebar() {
     var titleArray = document.getElementsByTagName("h2");
     for (let title = 0; title < titleArray.length; title++) {
-        $("#stillsidebar").append("<button id=" + titleArray[title].innerHTML.replace(" ", "_") + " class='collapsible'>" + titleArray[title].innerHTML + "</button>");
-        $("#stillsidebar").append("<div id=" + titleArray[title].innerHTML.replace(" ", "_") + "div class='content' ></div>")
-        $("#"+titleArray[title].innerHTML.replace(" ", "_")+"div").append("<ul style='list-style-type:none'></ul>")
-        var listElements = titleArray[title].nextElementSibling.getElementsByTagName("strong")
-        for (let element = 0; element < listElements.length; element++) {
-            $("#"+titleArray[title].innerHTML.replace(" ", "_")+"div ul").append("<li><a href='#"+ listElements[element].innerHTML +"'>" + listElements[element].innerHTML + "</a></li>");
+        if (titleArray[title].innerHTML != "Disclaimer" && titleArray[title].innerHTML != "Privacy Notice") {
+            $("#stillsidebar").append("<button id=" + titleArray[title].innerHTML.replace(" ", "_") + " class='collapsible'>" + titleArray[title].innerHTML + "</button>");
+            $("#stillsidebar").append("<div id=" + titleArray[title].innerHTML.replace(" ", "_") + "div class='content' ></div>")
+            $("#"+titleArray[title].innerHTML.replace(" ", "_")+"div").append("<ul style='list-style-type:none'></ul>")
+            var listElements = titleArray[title].nextElementSibling.getElementsByTagName("strong")
+            for (let element = 0; element < listElements.length; element++) {
+                $("#"+titleArray[title].innerHTML.replace(" ", "_")+"div ul").append("<li><a href='#"+ listElements[element].innerHTML +"'>" + listElements[element].innerHTML + "</a></li>");
+            }
         }
+        sideButtonAddEvent();
     }
-    sideButtonAddEvent();
 };
 
 function sideButtonAddEvent() {
