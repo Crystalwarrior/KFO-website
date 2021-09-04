@@ -2049,7 +2049,7 @@ input, select, textarea {
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		textarea:focus {
-			border-color: #37c0fb;
+			border-color: #691616;
 		}
 
 	input[type="text"],
@@ -2170,7 +2170,7 @@ input, select, textarea {
 		.icon.major {
 			text-align: center;
 			cursor: default;
-			background-color: #37c0fb;
+			background-color: #691616;
 			background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
@@ -2726,9 +2726,11 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
-		background-image: url("../../images/banner.jpg");
+		background-image: url("../../images/kfo.png");
 		background-position: center center;
-		background-size: cover;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-color: rgb(4,10,10);
 		height: 20em;
 		text-align: center;
 		position: relative;
@@ -2789,7 +2791,7 @@ input, select, textarea {
 		}
 
 		.wrapper.style3 {
-			background-color: #37c0fb;
+			background-color: #691616;
 			background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
@@ -2803,7 +2805,7 @@ input, select, textarea {
 			}
 
 				.wrapper.style3 .button:hover {
-					color: #37c0fb !important;
+					color: #691616 !important;
 				}
 
 		.wrapper.ruleIntro {
@@ -2823,7 +2825,7 @@ input, select, textarea {
 
 /* CTA */
 
-	#cta {
+	#cta { 
 		text-align: center;
 		padding: 3.5em 0;
 	}
@@ -2851,7 +2853,7 @@ input, select, textarea {
 		}
 
 			#footer a:hover {
-				color: #37c0fb;
+				color: #691616;
 				border-bottom-color: transparent;
 			}
 
