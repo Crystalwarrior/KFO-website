@@ -157,8 +157,7 @@ function createTimeline() {
                 if (Object.keys(areaCoord).length == 1) {
                   document.getElementById(lineData["area"]).style.marginLeft = ((areaHeaderSpacing/2) + timeColWidth + namelistWidth) + "px";
                 };
-                if ($("#timeline").width != $("#graphHeader").width() + namelistWidth) { // Check if we don't run out of space, if yes, make the canvas wider
-                  var canvasWidth = $("#timeline").width();
+                if ($("#timeline").width != $("#graphHeader").width() + namelistWidth) { // If header wider than the canvas, set canvas and everything necessary to width of header
                   $("#timeline").width( namelistWidth + $("#graphHeader").width() - namelistWidth);
                   $("#timeline svg").attr("width", $("#timeline").width());
 
@@ -196,7 +195,6 @@ function createTimeline() {
 }
 
 function drawTimescale() {
-  console.log("I'M DOING IT MR. KRAB!")
   var time = firstTime.split(":");
   var Hour = time[0]
   var Minute = time[1]

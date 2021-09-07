@@ -3492,16 +3492,7 @@ input, select, textarea {
 			}
 
 	}
-/*
-#graphHeader {
-	width: auto;
-	height: 10em;
-	display: flex;
-	flex-direction: row;
-	background-color: rgb(46, 42, 42);
-	border-bottom: 4px #484 solid;
-}
-*/
+
 .sticky {
 	position: sticky;
 	top: 0;
@@ -3558,6 +3549,7 @@ svg text {
   #graphHeader {
     background: blue;
 	width: fit-content;
+	width: -moz-fit-content;
 	display: flex;
     height: 10em;
     position: sticky;
