@@ -3508,6 +3508,7 @@ input, select, textarea {
 #nameList {
 	margin-top: 0.5em;
 	font-weight: bold;
+
 }
 [type="number"] {
 	width: 4em;
@@ -3556,6 +3557,30 @@ svg text {
     flex-grow: 0;
     flex-shrink: 0;
   }
+
+  .stickysidebar {
+	position: sticky;
+	top: 0;
+	max-height: 100vh;
+	overflow-y: scroll;
+	margin-top: 2.8em;
+	padding: 0.2em 0em 0em 0em;
+  }
+
+  #controlPanel {
+	position: fixed;
+    background: rgb(46, 42, 42);
+    width: 14em;
+	overflow-y: scroll;
+	height: 100vh;
+    max-height: 100vh;
+    top: 0px;
+    left: 0px;
+    color: white;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
   #container {
     display: inline-flex;
   }
