@@ -6,61 +6,46 @@
 -->
 <html>
 
-<head>
-	<title>Log Reader - Killing Fever Online</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-</head>
+	<head>
+		<title>Log Reader - Killing Fever Online</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
 
-<body class="is-preload">
-	<div id="page-wrapper">
-
-
-
-		<!-- Main -->
-		<div id="graphHeader" ref="header">
-
-		</div>
-		<div id="container">
-			<div id="controlPanel">
-				<input type="file" id="file-selector" accept=".log" multiple>
-
-				<input type="number" min=0 max=59 id="fromHour" value=0 style="color: black;">h
-				<input type="number" min=0 max=59 id="fromMinute" value=0 style="color: black;">m
-				<input type="number" min=0 max=59 id="fromSecond" value=0 style="color: black;">s
-				<br>
-
-				<input type="number" min=0 max=59 id="toHour" value=0 style="color: black;">h
-				<input type="number" min=0 max=59 id="toMinute" value=0 style="color: black;">m
-				<input type="number" min=0 max=59 id="toSecond" value=0 style="color: black;">s
-				<button id="readbtn">READ</button>
-				<ul id="nameList">
+	<body class="is-preload">
+		<div id="page-wrapper">
+			<!-- Main -->
+			<div id="graphHeader" ref="header">
 			</div>
-
-			<div id="content" ref="content">
-				<div id="timeline"></div>
+			<div id="container">
+				<div id="controlPanel">
+					<input type="file" id="file-selector" accept=".log" multiple>
+					<input type="number" min=0 max=59 id="fromHour" value=0 style="color: black;">h <input type="number"
+						min=0 max=59 id="fromMinute" value=0 style="color: black;">m <input type="number" min=0 max=59
+						id="fromSecond" value=0 style="color: black;">s <br>
+					<input type="number" min=0 max=59 id="toHour" value=0 style="color: black;">h <input type="number"
+						min=0 max=59 id="toMinute" value=0 style="color: black;">m <input type="number" min=0 max=59
+						id="toSecond" value=0 style="color: black;">s <button id="readbtn">READ</button>
+					<ul id="nameList">
+				</div>
+				<div id="content" ref="content">
+					<div id="timeline"></div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<div id="footer">
 			</div>
 		</div>
-
-		<!-- Footer -->
-		<div id="footer">
-
-
-		</div>
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/log_reader.js"></script>
-	<script src="assets/js/jquery.svg.js"></script>
-	<script src="assets/js/jquery.svgdom.js"></script>
-
-</body>
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/log_reader.js"></script>
+		<script src="assets/js/jquery.svg.js"></script>
+		<script src="assets/js/jquery.svgdom.js"></script>
+	</body>
 
 </html>
