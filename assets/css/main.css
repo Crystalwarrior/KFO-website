@@ -160,11 +160,6 @@ input, select, textarea {
 		margin-bottom: 0.3em;
 	}
 
-	.rule
-	{
-		font-size: 1.2em;
-	}
-
 	h3 {
 		font-size: 1.2em;
 		letter-spacing: -0.025em;
@@ -2466,7 +2461,6 @@ input, select, textarea {
 		input[type="button"]:active,
 		button:active,
 		.button:active {
-			background-color: #ca3838;
 			color: #fff;
 		}
 
@@ -2831,16 +2825,6 @@ input, select, textarea {
 			background: rgb(46, 42, 42);
 		}
 
-		.wrapper.rule {
-			padding: 0em 0em 1em 0em;
-			background: rgb(46, 42, 42);
-		}
-
-		.wrapper.rule:nth-child(odd) {
-			background: rgb(37, 37, 37);
-		}
-
-
 /* CTA */
 
 	#cta { 
@@ -2930,7 +2914,7 @@ input, select, textarea {
 }
 
 /* Add BG color when hovered over/clicked on */
-.active, .collapsible:hover {
+.collapsible:hover {
   background-color: #333;
   color: rgb(194, 28, 28);
 }
@@ -3625,3 +3609,17 @@ svg text {
   .dropItem {
 	  font-weight: bold;
   }
+
+  .rule {
+	/*padding: 0em 0em 1em 0em;*/
+	background: rgb(46, 42, 42);
+	margin-bottom: 0.5em;
+}
+
+.rule:nth-child(odd) {
+	background: rgb(37, 37, 37);
+}
+
+.rule .collapsible {
+	font-size: 1.5em;
+}

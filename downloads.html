@@ -185,6 +185,10 @@
 								</ol>
 								</p>
 							</div>
+							<button type="button" class="collapsible">How to Install (Click Me!)</button>
+							<div class="content">
+								E
+							</div>
 							<p></p>
 							<h3 id="full_content">Full Content (Last Updated: Aug. 19 2021 - up to <a
 									href="#update_8">Update #8: 3 AM Patch</a>)</h3>
@@ -374,23 +378,6 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
-	<script>
-		var coll = document.getElementsByClassName("collapsible");
-		var i;
-
-		for (i = 0; i < coll.length; i++) {
-			coll[i].addEventListener("click", function () {
-				this.classList.toggle("active");
-				var content = this.nextElementSibling;
-				if (content.style.maxHeight) {
-					content.style.maxHeight = null;
-				} else {
-					content.style.maxHeight = content.scrollHeight + "px";
-				}
-			});
-		}
-	</script>
 </body>
 
 </html>
