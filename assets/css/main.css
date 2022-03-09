@@ -2440,7 +2440,7 @@ input, select, textarea {
 		cursor: pointer;
 		display: inline-block;
 		padding: 0 0.5em;
-		line-height: 2.75em;
+		line-height: normal;
 		/*min-width: 9em;*/
 		text-align: center;
 		text-decoration: none;
