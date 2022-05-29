@@ -6,34 +6,27 @@
 -->
 <html>
 
-<head>
-	<title>Log Reader - Killing Fever Online</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-</head>
+	<head>
+		<title>Log Reader - Killing Fever Online</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
 
-<body class="is-preload">
-	<div id="page-wrapper">
-
-
-
-		<!-- Main -->
-		<div id="graphHeader" ref="header">
-
-		</div>
-		<div id="container">
+	<body class="is-preload">
+		<div id="page-wrapper">
+			<!-- Main -->
+			<div id="graphHeader" ref="header">
+			</div>
 			<div id="container">
 				<div id="controlPanel">
 					<input type="file" id="file-selector" accept=".log" multiple>
 					<input type="number" min=0 max=59 id="fromHour" value=0 style="color: black;">h <input type="number"
 						min=0 max=59 id="fromMinute" value=0 style="color: black;">m <input type="number" min=0 max=59
 						id="fromSecond" value=0 style="color: black;">s <br>
-					<input type="number" min=0 max=59 id="toHour" value=23 style="color: black;">h <input type="number"
+					<input type="number" min=0 max=59 id="toHour" value=0 style="color: black;">h <input type="number"
 						min=0 max=59 id="toMinute" value=0 style="color: black;">m <input type="number" min=0 max=59
 						id="toSecond" value=0 style="color: black;">s <button id="readbtn">READ</button>
-					<br>
-					Scale: <input type="number" min=1 id="Scale" value=1 style="color: black;">
 					<ul id="nameList">
 				</div>
 				<div id="content" ref="content">
