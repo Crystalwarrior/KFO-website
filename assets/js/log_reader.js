@@ -18,7 +18,7 @@ var svgGroup = {};
 var g;
 var lineg;
 var timeScale
-var blockHeight = 1;
+var blockHeight = 2;
 
 var namelistWidth = $("#controlPanel").width() + 10;
 
