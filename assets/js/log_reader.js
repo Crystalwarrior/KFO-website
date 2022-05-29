@@ -18,7 +18,7 @@ var svgGroup = {};
 var g;
 var lineg;
 var timeScale
-var blockHeight = 1;
+var blockHeight = 5;
 
 var namelistWidth = $("#controlPanel").width() + 10;
 
@@ -285,6 +285,7 @@ function readLine(line) { //Check if message is an IC message and return time, c
     }
   }
 }
+
  function formatString(theString) {
   if (theString.lastIndexOf(" ") == theString.length-1) {
     theString = theString.substr(0, theString.length-1);
