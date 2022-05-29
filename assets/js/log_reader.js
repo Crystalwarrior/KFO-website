@@ -18,7 +18,7 @@ var svgGroup = {};
 var g;
 var lineg;
 var timeScale
-var blockHeight = 5;
+var blockHeight = 1;
 
 var namelistWidth = $("#controlPanel").width() + 10;
 
@@ -43,27 +43,38 @@ $(document).ready(function(){
   });
 
   $("#readbtn").click(function() {
-    $(".roomName").remove();
-    $(".name").remove();
-    $(".vl").remove();
-    $("#timeline").svg('destroy');
-    $("#timeline").height(0);
-    $("#timeline").width(0);
-    $("#timeline").svg({onLoad: drawInitial});
-    pointX = -(areaHeaderSpacing/2) + pointSpacing
-    firstTime = null;
-    characters = {};
-    areaCoord = {};
-    areaHeaderY = 10;
-    areaHeaderBottom = 10;
-    createTimeline()
+    initialization();
+  });
+
+  $("#Scale").change(function() {
+    blockHeight = $("#Scale").val();
+    initialization();
   });
 
   $('#timeline').svg({onLoad: drawInitial});
 
   $("#timeline").height(500);
   $("#timeline svg").attr("height", $("#timeline").height());
+
+
 })
+
+function initialization() {
+  $(".roomName").remove();
+  $(".name").remove();
+  $(".vl").remove();
+  $("#timeline").svg('destroy');
+  $("#timeline").height(0);
+  $("#timeline").width(0);
+  $("#timeline").svg({onLoad: drawInitial});
+  pointX = -(areaHeaderSpacing/2) + pointSpacing
+  firstTime = null;
+  characters = {};
+  areaCoord = {};
+  areaHeaderY = 10;
+  areaHeaderBottom = 10;
+  createTimeline();
+};
 
 function drawInitial(svg) {
   canvas = svg;
