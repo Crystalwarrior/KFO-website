@@ -139,6 +139,10 @@ function createTimeline() {
                   characters[lineData["ID"]]["color"] = colours[Object.keys(characters).length-1];
                   $("#nameList").append( "<li class='name'><button id=" + lineData["ID"] + "vis class='far fa-eye'></button><font id= '" + lineData["ID"] + "' color='" + characters[lineData["ID"]]["color"] +"'>[" + lineData["ID"] + "]" + lineData["character"] + "</font></li>" );
                   canvas.polyline($("#travelLines"), [], {fill: 'none', stroke: characters[lineData["ID"]]["color"], strokeWidth: 2, id: lineData["ID"] + "line"});
+
+                  $($("#" + lineData["ID"] + "line"), canvas.root()).on('mouseover', svgOver).on('mouseout', svgOut);
+                  $("#"+lineData["ID"]).on('mouseover', svgOver).on('mouseout', svgOut);
+
                   $("#"+lineData["ID"]+"vis").on("click", function(){
                     console.log($(this));
                     var number = $(this).attr("id").split("vis")[0];
@@ -203,6 +207,28 @@ function createTimeline() {
     }
   }
   canvas.line(g, 0, areaHeaderBottom, $("#timeline svg").attr("width"), areaHeaderBottom, {strokeWidth: 5});
+}
+
+function svgClicked() { 
+  alert('This is a ' + $(this).attr('fill') + ' ' + this.nodeName); 
+} 
+
+function svgOver() {
+  var thisID = $(this).attr("id");
+  if (thisID.endsWith("line")) {
+    thisID = thisID.slice(0, -4);
+  };
+  $("#"+thisID+"line").attr('stroke', 'lime');
+  $("#"+thisID).attr('color', 'lime');
+} 
+
+function svgOut() { 
+  var thisID = $(this).attr("id");
+  if (thisID.endsWith("line")) {
+    thisID = thisID.slice(0, -4);
+  };
+  $("#"+thisID+"line").attr('stroke', characters[thisID]["color"]);
+  $("#"+thisID).attr('color', characters[thisID]["color"]);
 }
 
 function drawTimescale() {
