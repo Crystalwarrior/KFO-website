@@ -1,6 +1,64 @@
 {
-    "versions": [
-        {
+	"versions": [
+		{
+			"version": "kfo-content-12-22-2024",
+			"prev": "kfo-content",
+			"full": [
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=14qh-e2ctSZNcI_GCh30m21xzptoDemzb",
+					"hash": "4d650a5f5eae80618de7416b329417369568539a"
+				},
+				{
+					"action": "dl",
+					"url": "https://github.com/Crystalwarrior/KFO-Themes/releases/download/kfo-assets-12-22-2024/kfo-themes.7z",
+					"hash": "8b167ef86c4756f7b0c691708a22ec48d951a4d1"
+				},
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=15CC3wjBXQF_bV8ZnSjer6yNIA0B5KiIL"
+				},
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=1rR847AW-vCwoVpXuVPBM-A1Njwc9QMz7"
+				},
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=1HieVcyUjFPdmax0ffx8mqf0u4fXRef4f"
+				}
+			],
+			"update": [
+				{
+					"action": "notice",
+					"msg": "Previous installation detected! This update assumes you have the Full Content installed (up to update #11). Updates #12 and #13 will be installed..."
+				},
+				{
+					"action": "dl",
+					"url": "https://github.com/Crystalwarrior/KFO-Themes/releases/download/kfo-assets-12-22-2024/kfo-themes.7z",
+					"hash": "8b167ef86c4756f7b0c691708a22ec48d951a4d1"
+				},
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=15CC3wjBXQF_bV8ZnSjer6yNIA0B5KiIL"
+				},
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=1rR847AW-vCwoVpXuVPBM-A1Njwc9QMz7"
+				},
+				{
+					"action": "dl",
+					"url": "https://drive.google.com/uc?export=download&id=1HieVcyUjFPdmax0ffx8mqf0u4fXRef4f"
+				}
+			]
+		},
+		{
+			"version": "kfo-content",
+			"full": []
 		}
-    ]
+	],
+	"launcher": [
+		{
+			"branding": "https://crystalwarrior.github.io/KFO-website/images/logo.png"
+		}
+	]
 }

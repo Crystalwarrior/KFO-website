@@ -1,27 +1,27 @@
 {
-    "versions": [
-        {
-            "version": "kfo-client-12-22-2024",
-            "executable": "KillingFeverOnline.exe",
-            "full": [
-                {
-                    "action": "dl",
-                    "url": "https://github.com/Crystalwarrior/KFO-Client/releases/download/pre-release-2/Attorney_Online-windows-2019-windows.zip",
-                    "hash": "26fbfcdf1c69bcc81d702f4b1737a90d518dcb97"
-                }
-            ],
-            "update": [
-                {
-                    "action": "dl",
-                    "url": "https://github.com/Crystalwarrior/KFO-Client/releases/download/pre-release-2/Attorney_Online-windows-2019-windows.zip",
-                    "hash": "26fbfcdf1c69bcc81d702f4b1737a90d518dcb97"
-                }
-            ]
-        }
-    ],
-    "launcher": [
-        {
-            "branding": "https://crystalwarrior.github.io/KFO-website/images/kfo.png"
-        }
-    ]
+	"versions": [
+		{
+			"version": "kfo-client-12-22-2024",
+			"executable": "KillingFeverOnline.exe",
+			"full": [
+				{
+					"action": "dl",
+					"url": "https://github.com/Crystalwarrior/KFO-Client/releases/download/pre-release-2/Attorney_Online-windows-2019-windows.zip",
+					"hash": "26fbfcdf1c69bcc81d702f4b1737a90d518dcb97"
+				}
+			],
+			"update": [
+				{
+					"action": "dl",
+					"url": "https://github.com/Crystalwarrior/KFO-Client/releases/download/pre-release-2/Attorney_Online-windows-2019-windows.zip",
+					"hash": "26fbfcdf1c69bcc81d702f4b1737a90d518dcb97"
+				}
+			]
+		}
+	],
+	"launcher": [
+		{
+			"branding": "https://crystalwarrior.github.io/KFO-website/images/logo.png"
+		}
+	]
 }
