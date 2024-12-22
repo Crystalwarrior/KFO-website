@@ -18,5 +18,10 @@
                 }
             ]
         }
+    ],
+    "launcher": [
+        {
+            "branding": "https://crystalwarrior.github.io/KFO-website/images/kfo.png"
+        }
     ]
 }
