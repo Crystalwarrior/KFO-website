@@ -6,21 +6,13 @@
 			"full": [
 				{
 					"action": "notice",
-					"msg": "Currently, only themes may be downloaded from the launcher directly. Sorry!"
-				},
-				{
-					"action": "dl",
-					"url": "https://github.com/Crystalwarrior/KFO-Themes/releases/download/kfo-assets-12-22-2024/kfo-themes.7z"
+					"msg": "Currently, you must download the KFO content manually from the <a href=\"https://crystalwarrior.github.io/KFO-website/downloads.html\">KFO website</a>. Sorry!"
 				}
 			],
 			"update": [
 				{
 					"action": "notice",
-					"msg": "Previous installation detected! This update assumes you have the Full Content installed (up to update #11). Updates #12 and #13 will be installed..."
-				},
-				{
-					"action": "dl",
-					"url": "https://github.com/Crystalwarrior/KFO-Themes/releases/download/kfo-assets-12-22-2024/kfo-themes.7z"
+					"msg": "Currently, you must download the KFO content manually from the <a href=\"https://crystalwarrior.github.io/KFO-website/downloads.html\">KFO website</a>. Sorry!"
 				}
 			]
 		},
