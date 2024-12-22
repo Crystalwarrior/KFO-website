@@ -1,23 +1,6 @@
 {
     "versions": [
         {
-            "version": "kfo-12/22/2024",
-            "full": [
-				{
-					"action": "notice",
-					"msg": "lol jk nothing will happen"
-				}
-			],
-			"update": [
-				{
-					"action": "notice",
-					"msg": "This will make major updates to your base content! Please make sure to use the mounted base folder system from now on (using the Assets tab in the Settings). Before proceeding with the installation, please back up any of your custom content inside the base folder."
-				},
-				{
-					"action": "notice",
-					"msg": "lol jk nothing will happen"
-				}
-			]
 		}
     ]
 }

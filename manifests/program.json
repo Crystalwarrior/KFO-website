@@ -1,0 +1,22 @@
+{
+    "versions": [
+        {
+            "version": "kfo-client-12-22-2024",
+            "executable": "KillingFeverOnline.exe",
+            "full": [
+                {
+                    "action": "dl",
+                    "url": "https://github.com/Crystalwarrior/KFO-Client/releases/download/pre-release-2/Attorney_Online-windows-2019-windows.zip",
+                    "hash": "a1c5174c536536b0b975d5562d501f6b"
+                }
+            ],
+            "update": [
+                {
+                    "action": "dl",
+                    "url": "https://github.com/Crystalwarrior/KFO-Client/releases/download/pre-release-2/Attorney_Online-windows-2019-windows.zip",
+                    "hash": "a1c5174c536536b0b975d5562d501f6b"
+                }
+            ]
+        }
+    ]
+}
